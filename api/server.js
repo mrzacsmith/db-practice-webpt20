@@ -4,15 +4,16 @@ const cors = require('cors')
 const morgan = require('morgan')
 require('colors')
 
-const server = express()
+const testRouter = require('./testRoute.js')
+const characterRouter = require('../routes/character-routes.js')
 
-let currentTime = new Date().toLocaleString()
-server.get('/test', (req, res) => {
-  res.status(200).json({
-    status: 200,
-    message: 'GET /test is working',
-    time: currentTime,
-  })
-})
+const server = express()
+server.use(helmet())
+server.use(morgan('dev'))
+server.use(cors())
+server.use(express.json())
+
+server.use('/api', testRouter)
+server.use('/api/characters', characterRouter)
 
 module.exports = server
