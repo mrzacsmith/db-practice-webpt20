@@ -6,6 +6,7 @@ router.get('/test', (req, res) => {
     status: 200,
     message: 'GET /test is working',
     time: currentTime,
+    author: 'GH @MrZacSmith',
   })
 })
 
