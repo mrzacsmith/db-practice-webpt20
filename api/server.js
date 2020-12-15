@@ -13,7 +13,7 @@ server.use(morgan('dev'))
 server.use(cors())
 server.use(express.json())
 
-server.use('/api', testRouter)
+server.use(testRouter)
 server.use('/api/characters', characterRouter)
 
 module.exports = server
